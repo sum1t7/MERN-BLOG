@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+    <h1 class="mb-4">Blog Article</h1>
+    </div>
+    <a href="/article/new" class="btn btn-success">
+      New Article
+    </a>
+    <hr>
+    <% article.forEach(article=> { %>
+    <div class="card mt-4">
+      <div class="card-body">
+        <h3 class="card-title">
+          <%= article.title %></h3>
+        <div class="card-subtitle mb-2 muted-text">
+          <%= article.Date.toDateString() %>
+        </div>
+        <h6 class="card-des mb-2 text-info">
+          <%= article.description %>
+        </h6>
+        <a href="article/<%= article.slug %>" class="btn btn-primary" >Read More</a>
+        <form action="/article/<%= article.id%>?_method=DELETE" class="d-inline" method="post" >
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+        </div>
+    <% })%>
+  </div>
+</body>
+</html>
